@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Happy Toys - Contact Us</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <nav>
+        <h2>🐻 Happy Toys</h2>
+
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="toys.html">Toys</a></li>
+            <li><a href="new-arrivals.html">New Arrivals</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="contact">
+
+    <h1>Product Inquiry / Order</h1>
+
+    <form id="orderForm">
+
+        <label>Name</label>
+        <input type="text" id="name" required placeholder="Shlok Baral">
+
+        <label>Email</label>
+        <input type="email" id="email" required placeholder="shlok@example.com">
+
+        <label>Select Toy</label>
+
+        <select id="toy">
+            <option>Learning Blocks</option>
+            <option>Mini Car</option>
+            <option>Lovely Doll</option>
+            <option>Colorful Teddy</option>
+            <option>Building Set</option>
+        </select>
+
+        <label>Quantity</label>
+        <input type="number" id="quantity" min="1" value="1">
+
+        <label>Message</label>
+        <textarea id="message"
+            placeholder="Write your inquiry..."></textarea>
+
+        <button type="submit">Send Inquiry</button>
+
+    </form>
+
+</section>
+
+<footer>
+    <p>© 2026 Happy Toys</p>
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Happy Toys - Toys</title>
+    <style>
+/* =========================
+   BASIC RESET
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #fff8ef;
+    color: #333;
+    padding-top: 80px;
+}
+
+
+/* =========================
+   FIXED NAVIGATION
+========================= */
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background: #ff4d6d;
+    z-index: 1000;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+}
+
+nav {
+    width: 90%;
+    height: 90%;
+    margin: auto;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav h2 {
+    color: white;
+    font-size: 26px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 17px;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+nav ul li a:hover {
+    display: block;
+    color: #ffe600;
+    text-decoration: line-through;
+    flex-wrap: inherit;
+}
+
+
+/* =========================
+   PAGE TITLE
+========================= */
+
+.page-title {
+    text-align: center;
+    color: #ff4d6d;
+    font-size: 40px;
+    margin: 35px 10px 20px;
+}
+
+
+/* =========================
+   INTRODUCTION
+========================= */
+
+.intro {
+    width: 90%;
+    max-width: 1000px;
+    margin: 30px auto;
+    padding: 35px;
+
+    background: white;
+    border-radius: 18px;
+
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+
+    text-align: center;
+}
+
+.intro h2 {
+    color: #ff4d6d;
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.intro p {
+    font-size: 17px;
+    line-height: 1.8;
+    margin-bottom: 15px;
+}
+
+
+/* =========================
+   TOY CONTAINER
+========================= */
+
+.toy-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 30px auto;
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 25px;
+}
+
+
+/* =========================
+   TOY CARD
+========================= */
+
+.toy-card {
+    background: white;
+    padding: 18px;
+
+    border-radius: 15px;
+
+    text-align: center;
+
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+
+    transition: 0.3s;
+}
+
+.toy-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.toy-card img {
+    width: 100%;
+    height: 230px;
+
+    object-fit: cover;
+
+    border-radius: 12px;
+}
+
+.toy-card h2 {
+    margin: 15px 0 8px;
+    color: #333;
+}
+
+.toy-card p {
+    color: #666;
+    margin-bottom: 8px;
+}
+
+.toy-card h3 {
+    color: #ff4d6d;
+    margin-bottom: 12px;
+}
+
+
+/* =========================
+   BUTTON
+========================= */
+
+button {
+    border: none;
+    background: #ff4d6d;
+    color: white;
+
+    padding: 11px 20px;
+
+    border-radius: 25px;
+
+    cursor: pointer;
+
+    font-size: 15px;
+
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #ff9800;
+    transform: scale(1.05);
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    margin-top: 50px;
+
+    background: #ff4d6d;
+    color: white;
+
+    text-align: center;
+
+    padding: 25px;
+}
+
+
+/* =================================================
+   TABLET RESPONSIVE DESIGN
+   769px - 1024px
+================================================= */
+
+@media (max-width: 1024px) {
+
+    nav {
+        width: 94%;
+    }
+
+    nav ul {
+        gap: 15px;
+    }
+
+    nav ul li a {
+        font-size: 15px;
+    }
+
+    nav h2 {
+        font-size: 23px;
+    }
+
+    .toy-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .intro {
+        width: 92%;
+    }
+
+    .intro p {
+        font-size: 16px;
+    }
+}
+
+
+/* =================================================
+   MOBILE RESPONSIVE DESIGN
+   768px AND BELOW
+================================================= */
+
+@media (max-width: 768px) {
+
+    body {
+        padding-top: 125px;
+    }
+
+    header {
+        height: auto;
+        padding: 15px 0;
+    }
+
+    nav {
+        width: 94%;
+
+        flex-direction: column;
+
+        gap: 12px;
+    }
+
+    nav h2 {
+        font-size: 23px;
+    }
+
+    nav ul {
+        display: flex;
+
+        flex-wrap: wrap;
+
+        justify-content: center;
+
+        gap: 8px 15px;
+    }
+
+    nav ul li a {
+        font-size: 14px;
+    }
+
+    .page-title {
+        font-size: 32px;
+    }
+
+    .intro {
+        width: 92%;
+        padding: 25px 18px;
+    }
+
+    .intro h2 {
+        font-size: 25px;
+    }
+
+    .intro p {
+        font-size: 15px;
+        line-height: 1.7;
+    }
+
+    .toy-container {
+        width: 92%;
+
+        grid-template-columns: 1fr;
+
+        gap: 20px;
+    }
+
+    .toy-card img {
+        height: 240px;
+    }
+}
+
+
+/* =================================================
+   SMALL MOBILE PHONES
+   480px AND BELOW
+================================================= */
+
+@media (max-width: 480px) {
+
+    body {
+        padding-top: 145px;
+    }
+
+    nav h2 {
+        font-size: 20px;
+    }
+
+    nav ul {
+        gap: 7px 10px;
+    }
+
+    nav ul li a {
+        font-size: 13px;
+    }
+
+    .page-title {
+        font-size: 27px;
+    }
+
+    .intro {
+        padding: 20px 15px;
+    }
+
+    .intro h2 {
+        font-size: 22px;
+    }
+
+    .intro p {
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    .toy-card {
+        padding: 15px;
+    }
+
+    .toy-card img {
+        height: 200px;
+    }
+
+    .toy-card h2 {
+        font-size: 21px;
+    }
+
+    .toy-card h3 {
+        font-size: 18px;
+    }
+
+    button {
+        padding: 9px 16px;
+        font-size: 14px;
+    }
+
+    footer {
+        font-size: 14px;
+    }
+}
+    </style>
+</head>
+
+<body>
+
+<header>
+    <nav>
+        <h2>🦝 Happy Toys</h2>
+
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="toys.html">Toys</a></li>
+            <li><a href="new-arrivals.html">New Arrivals</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+    </nav>
+</header>
+
+<h1 class="page-title">Our Toys</h1>
+
+<div class="page-title">
+
+    <button onclick="filterToys('all')">All</button>
+    <button onclick="filterToys('educational')">Educational</button>
+    <button onclick="filterToys('cars')">Cars</button>
+    <button onclick="filterToys('dolls')">Dolls</button>
+
+</div>
+
+<section class="toy-container">
+
+    <div class="toy-card educational">
+        <img src="https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?auto=format&fit=crop&w=600&q=80">
+        <h2>Learning Blocks</h2>
+        <p>Age: 3–6 years</p>
+        <h3>Rs. 1,200</h3>
+        <button onclick="orderToy('Learning Blocks')">
+            Buy Now
+        </button>
+    </div>
+
+    <div class="toy-card cars">
+        <img src="https://images.unsplash.com/photo-1594787318286-3d835c1d207f?auto=format&fit=crop&w=600&q=80">
+        <h2>Mini Car</h2>
+        <p>Age: 4–8 years</p>
+        <h3>Rs. 800</h3>
+        <button onclick="orderToy('Mini Car')">
+            Buy Now
+        </button>
+    </div>
+
+    <div class="toy-card dolls">
+        <img src="shl (1).jpg">
+        <h2>Lovely Doll House</h2>
+        <p>Age: 5–10 years</p>
+        <h3>Rs. 1,500</h3>
+        <button onclick="orderToy('Lovely Doll')">
+            Buy Now
+        </button>
+    </div>
+    <div class="toy-card cars">
+        <img src="images.jpg">
+        <h2>Remote Control Car</h2>
+        <p>Age: 5–10 years</p>
+        <h3>Rs. 1,500</h3>
+        <button onclick="orderToy('Remote Control Car')">
+            Buy Now
+        </button>
+    </div>
+    <div class="toy-card robotics">
+        <img src="shlok.jpg">
+        <h2>Robtics & technology toys</h2>
+        <p>Age: 5–10 years</p>
+        <h3>Rs. 1,500</h3>
+        <button onclick="orderToy('Robtics & technology toys')">
+            Buy Now
+        </button>
+    </div>
+    
+
+</section>
+
+<footer>
+    <p>© 2026 Happy Toys</p>
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>

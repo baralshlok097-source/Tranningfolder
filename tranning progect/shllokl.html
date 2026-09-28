@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animated SB Monogram Logo with Slogan</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #0b071e;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      font-family: system-ui, -apple-system, sans-serif;
+    }
+
+    /* Interactive Canvas Background */
+    #particleCanvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+
+    /* Ambient Pulsing Glow Overlay */
+    .glow-overlay {
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(99, 102, 241, 0.35) 0%, rgba(236, 72, 153, 0.2) 40%, rgba(0, 0, 0, 0) 70%);
+      filter: blur(50px);
+      z-index: 2;
+      animation: pulseGlow 6s ease-in-out infinite alternate;
+    }
+
+    @keyframes pulseGlow {
+      0% { transform: scale(0.8); opacity: 0.5; }
+      100% { transform: scale(1.2); opacity: 1; }
+    }
+
+    /* Logo Glassmorphism Container */
+    .logo-wrapper {
+      position: relative;
+      z-index: 3;
+      width: 360px;
+      padding: 40px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 28px;
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+    }
+
+    /* SVG Styling & Animations */
+    .sb-svg {
+      width: 220px;
+      height: 180px;
+      overflow: visible;
+    }
+
+    .logo-path {
+      fill: none;
+      stroke: url(#brandGradient);
+      stroke-width: 12;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-dasharray: 1000;
+      stroke-dashoffset: 1000;
+      animation: drawStroke 3s cubic-bezier(0.65, 0, 0.35, 1) forwards, fillGlow 2.5s ease-in-out 2.8s infinite alternate;
+      filter: drop-shadow(0 0 12px rgba(99, 102, 241, 0.6));
+    }
+
+    @keyframes drawStroke {
+      0% { stroke-dashoffset: 1000; }
+      100% { stroke-dashoffset: 0; }
+    }
+
+    @keyframes fillGlow {
+      0% { filter: drop-shadow(0 0 8px rgba(99, 102, 241, 0.4)); }
+      100% { filter: drop-shadow(0 0 24px rgba(236, 72, 153, 0.9)); }
+    }
+
+    /* Brand Name */
+    .logo-title {
+      margin-top: 20px;
+      color: #ffffff;
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      opacity: 0;
+      transform: translateY(10px);
+      animation: fadeInUp 1s ease-out 2s forwards;
+    }
+
+    /* Animated Slogan */
+    .logo-slogan {
+      margin-top: 8px;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      background: linear-gradient(90deg, #38bdf8, #ec4899);
+      -webkit-background: text;
+      -webkit-text-fill-color: transparent;
+      opacity: 0;
+      transform: translateY(10px);
+      animation: fadeInUp 1.2s ease-out 2.4s forwards;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <canvas id="particleCanvas"></canvas>
+
+  <div class="glow-overlay"></div>
+
+  <div class="logo-wrapper">
+    <svg class="sb-svg" viewBox="0 0 220 180" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="brandGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#38bdf8" />
+          <stop offset="50%" stop-color="#6366f1" />
+          <stop offset="100%" stop-color="#ec4899" />
+        </linearGradient>
+      </defs>
+
+      <path class="logo-path" d="
+        M 80,45 
+        C 80,25 40,20 40,48 
+        C 40,75 80,70 80,100 
+        C 80,125 40,125 40,105 
+        M 80,40 
+        L 140,40 
+        C 175,40 175,70 140,70 
+        L 80,70 
+        M 125,70 
+        C 175,70 175,105 125,105 
+        L 99,105
+      " />
+    </svg>
+
+    <div class="logo-title">SB STUDIOS</div>
+    <div class="logo-slogan">Shaping Beyond Limits</div>
+  </div>
+
+  <script>
+    const canvas = document.getElementById('particleCanvas');
+    const ctx = canvas.getContext('2d');
+
+    let particles = [];
+    const numParticles = 70;
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    class Particle {
+      constructor() {
+        this.reset();
+      }
+
+      reset() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 2 + 0.5;
+        this.vx = (Math.random() - 0.5) * 0.4;
+        this.vy = (Math.random() - 0.5) * 0.4;
+        this.alpha = Math.random() * 0.6 + 0.1;
+      }
+
+      update() {
+        this.x += this.vx;
+        this.y += this.vy;
+
+        if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) {
+          this.reset();
+        }
+      }
+
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(168, 85, 247, ${this.alpha})`;
+        ctx.shadowBlur = 10;
+        ctx.shadowColor = '#6366f1';
+        ctx.fill();
+      }
+    }
+
+    for (let i = 0; i < numParticles; i++) {
+      particles.push(new Particle());
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(p => {
+        p.update();
+        p.draw();
+      });
+      requestAnimationFrame(animate);
+    }
+
+    animate();
+  </script>
+</body>
+</html>
